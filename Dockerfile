@@ -22,4 +22,6 @@ RUN echo "source $AEROSTACK2_PATH/as2_cli/setup_env.bash" >> $HOME/.bashrc
 COPY project_gazebo /project_gazebo
 WORKDIR /project_gazebo
 
-CMD bash -c "./launch_as2.bash -m"
+COPY libmodality_ros_hook_22.04_amd64.so /
+
+CMD bash -c "MODALITY_ROS_IGNORED_TOPICS='/parameter_events,/clock' LD_PRELOAD=/libmodality_ros_hook_22.04_amd64.so:/opt/ros/humble/lib/librmw_fastrtps_cpp.so ./launch_as2.bash -m"
