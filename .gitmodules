@@ -1,0 +1,3 @@
+[submodule "project_gazebo"]
+	path = project_gazebo
+	url = git@github.com:auxoncorp/project_gazebo.git
